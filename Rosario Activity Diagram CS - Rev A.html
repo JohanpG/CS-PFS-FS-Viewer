@@ -8,182 +8,32 @@
 <script src="vp/jquery-3.1.1.min.js"></script>
 <link href="vp/bootstrap-3.3.7.min.css" rel="stylesheet"/>
 <script src="vp/bootstrap-3.3.7.min.js"></script>
+ <link href="vp/vp-style-1.1.0.min.css" rel="stylesheet" />
+<!-- Import Utilities functions and styple for Pop Over -->
 <script src="Scripts/xlsx.full.min.js"></script>
+<script src="vp/utilities.js" type="text/javascript"></script> 
+<link href="vp/style_PopOver.css" rel="stylesheet" />
 
-<link href="vp/vp-style-1.1.0.min.css" rel="stylesheet" />
     <script>
-    //Variable with the objects form the use case
-    var dataUseCase = [];
-
     window.svgpublish = {"shapes":{"shape1":{"Props":{"Activity Name":"Check In Truck","Manual, Semiauto, Auto":"S","Icon #1":"MOM","Icon #2":"None","Icon #3":"None","Application":"SOP","Use Case ID":"INB-100-05","Use Case Type":"UC-UI","PFS Status":"OK"},"ConnectedTo":["shape28"],"ConnectedFrom":["shape927","shape842"],"Layers":[]},"shape28":{"Props":{"Activity Name":"Print Truck Ticket","Manual, Semiauto, Auto":"S","Icon #1":"MOM","Icon #2":"Printer","Icon #3":"None","Application":"SOP","Use Case ID":"INB-100-06","Use Case Type":"UC-UI-SI","PFS Status":"OK"},"ConnectedTo":["shape55"],"ConnectedFrom":["shape1"],"Layers":[]},"shape55":{"Props":{"Activity Name":"Inspect Truck","Manual, Semiauto, Auto":"M","Icon #1":"None","Icon #2":"None","Icon #3":"None","Application":"","Use Case ID":"QLT-100-07","Use Case Type":"UC","PFS Status":"OK"},"ConnectedTo":["shape82"],"ConnectedFrom":["shape28"],"Layers":[]},"shape82":{"Props":{"Activity Name":"Scan Truck Ticket","Manual, Semiauto, Auto":"S","Icon #1":"Scanner","Icon #2":"None","Icon #3":"None","Application":"Scanner","Use Case ID":"INB-100-08","Use Case Type":"UC-UI-SI","PFS Status":"OK"},"ConnectedTo":["shape109"],"ConnectedFrom":["shape55"],"Layers":[]},"shape109":{"Props":{"Activity Name":"Take Sample ","Manual, Semiauto, Auto":"S","Icon #1":"HMI","Icon #2":"None","Icon #3":"None","Application":"Probe","Use Case ID":"QLT-100-09","Use Case Type":"UC-UI","PFS Status":"OK"},"ConnectedTo":["shape136"],"ConnectedFrom":["shape82","shape846"],"Layers":[]},"shape136":{"Props":{"Activity Name":"Execute Quality Test","Manual, Semiauto, Auto":"M","Icon #1":"None","Icon #2":"None","Icon #3":"None","Application":"","Use Case ID":"QLT-100-10","Use Case Type":"UC","PFS Status":"OK"},"ConnectedTo":["shape163"],"ConnectedFrom":["shape109"],"Layers":[]},"shape163":{"Props":{"Activity Name":"Record Quality Results","Manual, Semiauto, Auto":"S","Icon #1":"MOM","Icon #2":"None","Icon #3":"None","Application":"SOP","Use Case ID":"QLT-1001-11","Use Case Type":"UC-UI","PFS Status":"OK"},"ConnectedTo":["shape190"],"ConnectedFrom":["shape136"],"Layers":[]},"shape190":{"Props":{"Activity Name":"Print Test Results","Manual, Semiauto, Auto":"S","Icon #1":"MOM","Icon #2":"Printer","Icon #3":"None","Application":"SOP","Use Case ID":"QLT-1001-12","Use Case Type":"UC-UI-SI","PFS Status":"OK"},"ConnectedTo":["shape224"],"ConnectedFrom":["shape163"],"Layers":[]},"shape217":{"Layers":[3]},"shape218":{"Layers":[3]},"shape219":{"Layers":[3]},"shape220":{"Layers":[3]},"shape221":{"Layers":[3]},"shape222":{"Layers":[3]},"shape223":{"Layers":[3]},"shape224":{"Props":{"Activity Name":"Notify Driver","Manual, Semiauto, Auto":"M","Icon #1":"None","Icon #2":"None","Icon #3":"None","Application":"","Use Case ID":"INB-100-13","Use Case Type":"UC","PFS Status":"OK"},"ConnectedTo":["shape252"],"ConnectedFrom":["shape190"],"Layers":[]},"shape251":{"Layers":[3]},"shape252":{"Props":{"Activity Name":"Pick Up Sample","Manual, Semiauto, Auto":"M","Icon #1":"None","Icon #2":"None","Icon #3":"None","Application":"","Use Case ID":"QLT-100-14","Use Case Type":"UC","PFS Status":"OK"},"ConnectedTo":["shape957"],"ConnectedFrom":["shape224"],"Layers":[]},"shape279":{"Layers":[3]},"shape280":{"Props":{"Activity Name":"Execute Quality Lab  Test","Manual, Semiauto, Auto":"M","Icon #1":"None","Icon #2":"None","Icon #3":"None","Application":"","Use Case ID":"QLT-100-16","Use Case Type":"UC","PFS Status":"OK"},"ConnectedTo":["shape308","shape863"],"ConnectedFrom":["shape957"],"Layers":[]},"shape307":{"Layers":[3]},"shape308":{"Props":{"Activity Name":"Record Quality Lab Results","Manual, Semiauto, Auto":"S","Icon #1":"MOM","Icon #2":"Paper","Icon #3":"None","Application":"Excel","Use Case ID":"QLT-100-17","Use Case Type":"UC-UI","PFS Status":"OK"},"ConnectedTo":["shape336"],"ConnectedFrom":["shape280"],"Layers":[]},"shape335":{"Layers":[3]},"shape336":{"Props":{"Activity Name":"Send Email","Manual, Semiauto, Auto":"S","Icon #1":"MOM","Icon #2":"None","Icon #3":"None","Application":"Email","Use Case ID":"INB-100-18","Use Case Type":"UC-UI","PFS Status":"OK"},"ConnectedTo":["shape985"],"ConnectedFrom":["shape308"],"Layers":[]},"shape363":{"Props":{"Activity Name":"Notify Driver","Manual, Semiauto, Auto":"M","Icon #1":"None","Icon #2":"None","Icon #3":"None","Application":"","Use Case ID":"INB-100-20","Use Case Type":"UC","PFS Status":"OK"},"ConnectedTo":["shape782"],"ConnectedFrom":["shape985"],"Layers":[]},"shape390":{"Layers":[3]},"shape391":{"Props":{"Activity Name":"Scan Truck Ticket","Manual, Semiauto, Auto":"S","Icon #1":"Scanner","Icon #2":"None","Icon #3":"None","Application":"Scanner","Use Case ID":"INB-100-22","Use Case Type":"UC-UI-SI","PFS Status":"OK"},"ConnectedTo":["shape419"],"ConnectedFrom":["shape782"],"Layers":[]},"shape418":{"Layers":[3]},"shape419":{"Props":{"Activity Name":"Capture Gross Weight","Manual, Semiauto, Auto":"S","Icon #1":"HMI","Icon #2":"None","Icon #3":"None","Application":"Scale System","Use Case ID":"INB-100-23","Use Case Type":"UC-UI-SI","PFS Status":"OK"},"ConnectedTo":["shape447"],"ConnectedFrom":["shape391","shape849"],"Layers":[]},"shape446":{"Layers":[3]},"shape447":{"Props":{"Activity Name":"Record Gross Weight","Manual, Semiauto, Auto":"S","Icon #1":"MOM","Icon #2":"None","Icon #3":"None","Application":"SOP","Use Case ID":"INB-100-24","Use Case Type":"UC-UI-SI","PFS Status":"OK"},"ConnectedTo":["shape475"],"ConnectedFrom":["shape419"],"Layers":[]},"shape474":{"Layers":[3]},"shape475":{"Props":{"Activity Name":"Visual Inspection","Manual, Semiauto, Auto":"M","Icon #1":"None","Icon #2":"None","Icon #3":"None","Application":"","Use Case ID":"QLT-100-25","Use Case Type":"UC","PFS Status":"OK"},"ConnectedTo":["shape1014","shape1019"],"ConnectedFrom":["shape447"],"Layers":[]},"shape502":{"Layers":[3]},"shape503":{"Props":{"Activity Name":"Set Up Route","Manual, Semiauto, Auto":"S","Icon #1":"HMI","Icon #2":"None","Icon #3":"None","Application":"Scada Siemens","Use Case ID":"INB-100-26","Use Case Type":"UC-UI","PFS Status":"OK"},"ConnectedTo":["shape531"],"ConnectedFrom":["shape1014"],"Layers":[]},"shape530":{"Layers":[3]},"shape531":{"Props":{"Activity Name":"Start Equipment","Manual, Semiauto, Auto":"S","Icon #1":"HMI","Icon #2":"None","Icon #3":"None","Application":"Scada Siemens","Use Case ID":"INB-100-27","Use Case Type":"UC-UI","PFS Status":"OK"},"ConnectedTo":["shape754"],"ConnectedFrom":["shape503"],"Layers":[]},"shape558":{"Layers":[3]},"shape559":{"Props":{"Activity Name":"Stop Equipment","Manual, Semiauto, Auto":"S","Icon #1":"HMI","Icon #2":"None","Icon #3":"None","Application":"Scada Siemens","Use Case ID":"INB-100-29","Use Case Type":"UC-UI","PFS Status":"OK"},"ConnectedFrom":["shape754"],"Layers":[]},"shape586":{"Layers":[3]},"shape587":{"Props":{"Activity Name":"Scan Truck Ticket","Manual, Semiauto, Auto":"S","Icon #1":"Scanner","Icon #2":"None","Icon #3":"None","Application":"Scanner","Use Case ID":"INB-100-30","Use Case Type":"UC-UI-SI","PFS Status":"OK"},"ConnectedTo":["shape614"],"ConnectedFrom":["shape754"],"Layers":[]},"shape614":{"Props":{"Activity Name":"Capture Tare Weight","Manual, Semiauto, Auto":"S","Icon #1":"HMI","Icon #2":"None","Icon #3":"None","Application":"Scale System","Use Case ID":"INB-100-31","Use Case Type":"UC-UI-SI","PFS Status":"OK"},"ConnectedTo":["shape641"],"ConnectedFrom":["shape587","shape855"],"Layers":[]},"shape641":{"Props":{"Activity Name":"Record Tare Weight","Manual, Semiauto, Auto":"S","Icon #1":"MOM","Icon #2":"None","Icon #3":"None","Application":"SOP","Use Case ID":"INB-100-32","Use Case Type":"UC-UI-SI","PFS Status":"OK"},"ConnectedTo":["shape668"],"ConnectedFrom":["shape614"],"Layers":[]},"shape668":{"Props":{"Activity Name":"Check Out Truck","Manual, Semiauto, Auto":"S","Icon #1":"MOM","Icon #2":"Printer","Icon #3":"None","Application":"SOP","Use Case ID":"INB-100-33","Use Case Type":"UC-UI-SI","PFS Status":"OK"},"ConnectedTo":["shape695"],"ConnectedFrom":["shape641"],"Layers":[]},"shape695":{"Props":{"Activity Name":"Update Inventory","Manual, Semiauto, Auto":"S","Icon #1":"MOM","Icon #2":"None","Icon #3":"None","Application":"MAPPS","Use Case ID":"INV-100-34","Use Case Type":"UC-UI","PFS Status":"OK"},"ConnectedFrom":["shape668"],"Layers":[]},"shape722":{"Layers":[3]},"shape723":{"Layers":[3]},"shape724":{"Layers":[3]},"shape725":{"Layers":[3]},"shape726":{"Layers":[3]},"shape727":{"Props":{"Activity Name":"Execute Logistical Activities","Manual, Semiauto, Auto":"S","Icon #1":"ERP","Icon #2":"None","Icon #3":"None","Application":"Excel","Use Case ID":"INB-100-21","Use Case Type":"UC-UI","PFS Status":"OK"},"ConnectedFrom":["shape782","shape1014"],"Layers":[]},"shape754":{"Props":{"Activity Name":"Unload Product","Manual, Semiauto, Auto":"S","Icon #1":"HMI","Icon #2":"None","Icon #3":"None","Application":"Scada Siemens","Use Case ID":"INB-100-28","Use Case Type":"UC-UI","PFS Status":"OK"},"ConnectedTo":["shape587","shape559"],"ConnectedFrom":["shape531","shape852"],"Layers":[]},"shape781":{"Layers":[3]},"shape782":{"Props":{"Decision":"Quality Ok?"},"ConnectedTo":["shape391","shape727"],"ConnectedFrom":["shape363"],"Layers":[2]},"shape785":{"Layers":[3]},"shape786":{"Layers":[3]},"shape787":{"Props":{"Activity Name":"Create Receiving Schedule","Manual, Semiauto, Auto":"S","Icon #1":"ERP","Icon #2":"None","Icon #3":"None","Application":"SAC","Use Case ID":"INB-100-03","Use Case Type":"UC-UI","PFS Status":"OK"},"ConnectedTo":["shape927"],"ConnectedFrom":["shape900"],"Layers":[]},"shape814":{"Layers":[3]},"shape842":{"Props":{"Physical Process":"Authorizing"},"ConnectedTo":["shape846","shape1"],"Layers":[]},"shape845":{"Layers":[3]},"shape846":{"Props":{"Physical Process":"Sampling"},"ConnectedTo":["shape863","shape109"],"ConnectedFrom":["shape842"],"Layers":[]},"shape849":{"Props":{"Physical Process":"Truck Weighing (Gross)"},"ConnectedTo":["shape1019","shape419"],"ConnectedFrom":["shape863"],"Layers":[]},"shape852":{"Props":{"Physical Process":"Unloading"},"ConnectedTo":["shape855","shape754"],"ConnectedFrom":["shape1019"],"Layers":[]},"shape855":{"Props":{"Physical Process":"Truck Weighing (Tare)"},"ConnectedTo":["shape614"],"ConnectedFrom":["shape852"],"Layers":[]},"shape858":{"Layers":[3]},"shape859":{"Layers":[3]},"shape861":{"Layers":[3]},"shape862":{"Layers":[3]},"shape863":{"Props":{"Decision":"Quality Ok?"},"ConnectedTo":["shape849","shape867"],"ConnectedFrom":["shape846","shape280"],"Layers":[2]},"shape866":{"Layers":[3]},"shape867":{"Props":{"Physical Process":"Rejecting"},"ConnectedFrom":["shape863","shape1019"],"Layers":[]},"shape870":{"Layers":[3]},"shape871":{"Layers":[3]},"shape872":{"Layers":[3]},"shape873":{"Props":{"Activity Name":"Create Receiving Plan","Manual, Semiauto, Auto":"S","Icon #1":"ERP","Icon #2":"None","Icon #3":"None","Application":"Excel","Use Case ID":"INB-100-01","Use Case Type":"UC-UI","PFS Status":"OK"},"ConnectedTo":["shape900"],"Layers":[]},"shape900":{"Props":{"Activity Name":"Send Receiving Plan","Manual, Semiauto, Auto":"S","Icon #1":"ERP","Icon #2":"None","Icon #3":"None","Application":"Email","Use Case ID":"INB-100-02","Use Case Type":"UC-UI","PFS Status":"OK"},"ConnectedTo":["shape787"],"ConnectedFrom":["shape873"],"Layers":[]},"shape927":{"Props":{"Activity Name":"Send Receiving Schedule","Manual, Semiauto, Auto":"S","Icon #1":"ERP","Icon #2":"None","Icon #3":"None","Application":"Email","Use Case ID":"INB-100-04","Use Case Type":"UC-UI","PFS Status":"OK"},"ConnectedTo":["shape1"],"ConnectedFrom":["shape787"],"Layers":[]},"shape954":{"Layers":[3]},"shape955":{"Layers":[3]},"shape956":{"Layers":[3]},"shape957":{"Props":{"Activity Name":"Create Lot Number","Manual, Semiauto, Auto":"S","Icon #1":"MOM","Icon #2":"None","Icon #3":"None","Application":"MAPPS","Use Case ID":"QLT-100-15","Use Case Type":"UC-UI","PFS Status":"OK"},"ConnectedTo":["shape280"],"ConnectedFrom":["shape252"],"Layers":[]},"shape984":{"Layers":[3]},"shape985":{"Props":{"Activity Name":"Print Authorization Analysis","Manual, Semiauto, Auto":"S","Icon #1":"MOM","Icon #2":"Printer","Icon #3":"None","Application":"Excel","Use Case ID":"INB-100-19","Use Case Type":"UC-UI","PFS Status":"OK"},"ConnectedTo":["shape363"],"ConnectedFrom":["shape336"],"Layers":[]},"shape1012":{"Layers":[3]},"shape1013":{"Layers":[3]},"shape1014":{"Props":{"Decision":"Quality Ok?"},"ConnectedTo":["shape727","shape503"],"ConnectedFrom":["shape475"],"Layers":[2]},"shape1017":{"Layers":[3]},"shape1018":{"Layers":[3]},"shape1019":{"Props":{"Decision":"Quality Ok?"},"ConnectedTo":["shape852","shape867"],"ConnectedFrom":["shape849","shape475"],"Layers":[2]},"shape1022":{"Layers":[3]},"shape1023":{"Layers":[3]},"shape1024":{"Layers":[3]},"shape1025":{"Layers":[3]},"shape1026":{"Layers":[3]},"shape1027":{"Layers":[3]},"shape1028":{"Layers":[3]},"shape1029":{"Layers":[3]},"shape1030":{"Layers":[3]}},"pages":[{"Name":"RCV Receiving Bulk Barley by Truck","Id":111}],"currentPage":{"Name":"RCV Receiving Bulk Barley by Truck","Id":111},"layers":[{"Name":"Data Graphic","Index":1},{"Name":"Flowchart","Index":2},{"Name":"Connector","Index":3}],"enableProps":true,"enableLinks":true,"enablePages":true,"enableSearch":false,"enableSidebar":true,"enableTooltips":true,"enableSelection":true,"enableLayers":false,"enableFollowHyperlinks":true,"openHyperlinksInNewWindow":true}
     $(document).ready(function () {
         $("div.svg").panzoom({
             svg: $("div.svg > svg").get(0),
             viewBox: "0 0 1260 900"
         }).removeClass("appear");
-
-      
+        //Get data from generate usecase json
+        //dataUseCase = getJData('Scripts/useCaseRevB.json');
+        //Refresh pop over with loaded data
+        refreshPopOver();
+    
     });
-
-    function refreshPopOver()
-    {
-        var diagramData = window.svgpublish.shapes;
-
-        $.each(diagramData, function (shapeId, shapeData) {
-
-            var props = shapeData.Props;
-            //var props = Datajsonformat.;
-            if (!props)
-                return;
-
-            //Get Object matching the usecase 
-            function getValue(useCaseID) {
-                var val=[];
-                $.each(dataUseCase, function (i,e) {
-                    if (e["Use Case ID"].indexOf(useCaseID) >= 0) {
-                        val = e;
-                        return false;
-                    }
-                });
-                return val;
-            };
-
-            var useCaseActivity = getValue(props["Use Case ID"]);
-            //Split Steps 
-            var steps ="";
-            if (typeof useCaseActivity["Steps"] !== "undefined") {
-                steps = useCaseActivity["Steps"].replace(/\n/g, '<br />');
-            }
-
-            var $shape = $("#" + shapeId);
-
-            // build options for popover: placement function, iframe url from properties
-            var options = {
-                placement: function (context, source) {
-                    var position = $(source).position();
-                    if (position.right > 500)
-                        return "left";
-                    if (position.left < 500)
-                        return "right";
-                    if (position.top < 300)
-                        return "bottom";
-                    return "top";
-                },
-                trigger: "manual",
-                container: "html",
-                html: true,
-                content: '' +
-                    '<p>' +
-                      '<span class="h4"> ' + props["Activity Name"] + '<br/>' +
-                      '<span class="text-muted small"> ' + props["Use Case ID"] + '</span>' +
-                    '</p>' +
-                    '<p><b>Actor:</b> ' + useCaseActivity["Actor"] + '</p>' +
-                    '<p><b>Location:</b> ' + useCaseActivity["Location"] + '</p>' +
-                    '<p><b>Description:</b> '+ useCaseActivity["Description"] + '</p>' +
-                    '<p><b>Steps:</b> </p>' +
-                    '<p>' + steps + '</p>' +
-                    '<p><b>Application:</b> ' + useCaseActivity["Application"] + '</p>' +
-                    '<p><b>Notes:</b> ' + useCaseActivity["Activity Notes"] + '</p>' +
-                    '<p><b>Documents:</b> ' + useCaseActivity["Related Documents"] + '</p>',
-                title: props["Activity Name"]
-            };
-
-            // create the popover for the shape        
-            $shape.popover(options);
-
-            // decorate the shape with "hand" cursor
-            $shape.css("cursor", "pointer");
-
-            // hide the popover hiding when clicked outside
-            $('body').on('click', function (e) {
-                $shape.popover('hide');
-            });
-
-            $shape.on('click', function (evt) {
-                evt.stopPropagation();
-                $shape.popover('toggle');
-            });
-
-            $shape.on('mouseover', function () {
-                $(this).attr('filter', 'url(#hover)');
-            });
-
-            $shape.on('mouseout', function () {
-                $(this).removeAttr('filter');
-            });
-
-            $shape.tooltip({
-                container: "body",
-                title: props.Name
-            });
-        });
-    }
-    //Read XLSX
-    var oFileIn;
-
-    $(function()
-    {
-        oFileIn = document.getElementById('my_file_input');
-        if(oFileIn.addEventListener)
-        {
-            oFileIn.addEventListener('change', filePicked, false);
-        }
-    });
-
-
-    function filePicked(oEvent) 
-    {
-        // Get The File From The Input
-        files = [];
-        var oFile = oEvent.target.files[0];
-        var sFilename = oFile.name;
-        // Create A File Reader HTML5
-        var reader = new FileReader();
-
-
-        // Ready The Event For When A File Gets Selected
-        reader.onload = function(e) 
-        {
-            var data = e.target.result;
-            var workbook = XLSX.read(data, {type : 'binary'});
-
-            /* DO SOMETHING WITH workbook HERE */
-            var first_sheet_name = workbook.SheetNames[2];
-            /* Get worksheet */
-            var worksheet = workbook.Sheets[first_sheet_name];
-
-            var Datajsonformat = XLSX.utils.sheet_to_json(worksheet);
-            dataUseCase = Datajsonformat;
-            console.log(Datajsonformat);
-            refreshPopOver();
-        }
-        reader.readAsBinaryString(oFile);
-    }
-
+    
     </script>
 <script src="vp/vp-script-1.1.0.min.js"></script>
 </head>
 <body>
-    <style>
-        .popover {
-            min-width: 400px;
-            height: auto;
-            max-height:none;
-            max-width: 500px;
-        }
-
-            .popover img {
-                height: 150px;
-                width: auto;
-                float: left;
-                margin-right: 10px;
-            }
-
-            .popover .user {
-                margin-left: 10px;
-            }
-    </style>
 <div id="diagram-sidebar" class="container" style="display: none">
+    <img src="vp/Cargill_Logo.png" alt="Cargill Logo" >
         <h3 id="panel-caption">Rosario Activity Diagram CS - Rev A.VSDX</h3>
 
         <div id="shape-pages" class="panel panel-default" style="display: none">
@@ -206,7 +56,7 @@
         </div>
         
        
-        <div id="shape-links" class="panel panel-default" style="display: none">
+        <div id="shape-links" class="panel panel-default" style="visibility: hidden" >
             <div class="panel-heading">
                 <h4 class="panel-title">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapseLinks">
@@ -228,7 +78,7 @@
             </div>
         </div>
         
-        <div id="shape-props" class="panel panel-default" style="display: none">
+        <div id="shape-props" class="panel panel-default" style="visibility: hidden">
             <div class="panel-heading">
                 <h4 class="panel-title">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapseProps">
