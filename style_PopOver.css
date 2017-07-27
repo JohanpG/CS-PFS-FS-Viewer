@@ -1,0 +1,17 @@
+.popover {
+            min-width: 400px;
+            height: auto;
+            max-height:none;
+            max-width: 500px;
+        }
+
+            .popover img {
+                height: 150px;
+                width: auto;
+                float: left;
+                margin-right: 10px;
+            }
+
+            .popover .user {
+                margin-left: 10px;
+            }
