@@ -10,7 +10,9 @@
 <script src="vp/bootstrap-3.3.7.min.js"></script>
  <link href="vp/vp-style-1.1.0.min.css" rel="stylesheet" />
 <!-- Import Utilities functions and styple for Pop Over -->
+<script src="vp/xlsx.full.min.js" type="text/javascript"></script> 
 <script src="vp/utilitiesSP.js" type="text/javascript"></script> 
+ <script src="vp/utilities.js" type="text/javascript"></script> 
 <link href="vp/style_PopOver.css" rel="stylesheet" />
 
     <script>
@@ -20,11 +22,12 @@
             svg: $("div.svg > svg").get(0),
             viewBox: "0 0 1260 900"
         }).removeClass("appear");
-        //Get data from generate usecase json
-        //dataUseCase = getJData('Scripts/useCaseRevB.json');
-        //Refresh pop over with loaded data
-        refreshPopOver();
-    
+        //Read and load json function
+        var url = 'https://omnicon.sharepoint.com/GlobalEngineering/MOM/ActivityDiagramWebViewer/Activity%20Diagram%20Web%20Viewer%20Pages%20Malt/RosarioUseCaseRevBCopy.txt';//Specifies DATA FILE
+        //Read tghe use case data
+        dataUseCase = getJData(url);
+        //Rehresh Pop Over
+        refreshPopOver(dataUseCase);
     });
    
     </script>
@@ -55,7 +58,7 @@
         </div>
         
        
-        <div id="shape-links" class="panel panel-default" style="visibility: hidden" >
+        <div id="shape-links" class="panel panel-default" style="visibility: visible" >
             <div class="panel-heading">
                 <h4 class="panel-title">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapseLinks">
