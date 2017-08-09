@@ -77,6 +77,11 @@ var dataUseCase = [];
                 if (typeof useCaseActivity["Steps"] !== "undefined") {
                     existingContent = existingContent + '<p><b>Steps:</b><p>' + useCaseActivity["Steps"] + '</p></p>';
                 }
+
+                //Variations
+                if (typeof useCaseActivity["Variations"] !== "undefined") {
+                    existingContent = existingContent + '<p><b>Variations:</b><p>' + useCaseActivity["Variations"] + '</p></p>';
+                }
                 //Activity notes
                 if (typeof useCaseActivity["Activity Notes"] !== "undefined") {
                     existingContent = existingContent + '<p><b>Notes:</b> <p>' + useCaseActivity["Activity Notes"] + '</p></p>';
@@ -86,7 +91,7 @@ var dataUseCase = [];
                     existingContent = existingContent + '<p><b>Documents:</b><p> ' + useCaseActivity["Related Documents"] + '</p></p>';
                 }
                 //Mockup
-                if (typeof useCaseActivity["Certified Mockups ID"] !== "undefined") {
+                if (typeof useCaseActivity["Certified Mockups ID"] !== "undefined" && useCaseActivity["Certified Mockups ID"] != "") {
                     existingContent = existingContent + '<p><b>Mockup:</b><a onclick="displayModal(' + "'" + shapeId + "'" + ',' + "'" + useCaseActivity["Certified Mockups ID"] + "'" + ')">   View</button></p>';
                 }
                 //Add Breaks 
@@ -196,8 +201,8 @@ function getJSONP(url, success) {
         var captionText = document.getElementById("caption");
         modal.style.display = "block";
         //Set mock up patch
-        var Folder = '../Activity%20Diagram%20Web%20Viewer%20Pages%20FSD%20GOSCE/';
-        var fullPath = Folder + code +'.jpg';
+        var Folder = '../Mockups%20Library/';
+        var fullPath = Folder + code +'.png';
         modalImg.src = fullPath;
         captionText.innerHTML = caption;
 
